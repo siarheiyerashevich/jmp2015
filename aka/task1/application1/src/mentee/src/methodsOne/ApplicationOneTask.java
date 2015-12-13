@@ -1,6 +1,6 @@
 package mentee.src.methodsOne;
 
-import com.supplyon.src.service.StringUtils;
+import mentee.src.service.StringUtils;
 
 public class ApplicationOneTask {
 

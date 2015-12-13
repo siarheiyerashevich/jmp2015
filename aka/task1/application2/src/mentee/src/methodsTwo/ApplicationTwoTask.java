@@ -1,6 +1,6 @@
 package mentee.src.methodsTwo;
 
-import com.supplyon.src.service.StringUtils;
+import mentee.src.service.StringUtils;
 
 /**
  * Created by Aliaksandr_Karnilovi on 11/26/2015.
