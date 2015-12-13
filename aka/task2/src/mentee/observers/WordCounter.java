@@ -11,7 +11,6 @@ public class WordCounter extends Observer {
 
     public WordCounter(Subject subject){
         this.subject = subject;
-        this.subject.attach(this);
         this.totalCount = 0;
     }
 

@@ -11,13 +11,14 @@ public class NumberCounter extends Observer {
 
     public NumberCounter(Subject subject){
         this.subject = subject;
-        this.subject.attach(this);
         this.stringWithNumCount = 0;
     }
 
     @Override
     public void update() {
-        if(this.subject.getCurWord().matches(".*\\d+.*")) this.stringWithNumCount++;
+        if(this.subject.getCurWord().matches(".*\\d+.*")) {
+            this.stringWithNumCount++;
+        }
         System.out.println("Total count of strings with numbers: "+this.stringWithNumCount);
     }
 }

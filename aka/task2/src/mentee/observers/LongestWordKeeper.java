@@ -12,7 +12,6 @@ public class LongestWordKeeper extends Observer {
 
     public LongestWordKeeper(Subject subject){
         this.subject = subject;
-        this.subject.attach(this);
         this.longestWordLength=0;
     }
 

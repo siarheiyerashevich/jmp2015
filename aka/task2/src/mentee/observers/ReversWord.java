@@ -9,7 +9,6 @@ public class ReversWord extends Observer {
 
     public ReversWord(Subject subject){
         this.subject = subject;
-        this.subject.attach(this);
     }
 
     @Override
