@@ -1,6 +1,6 @@
-package mentee.src.methodsTwo;
+package java.mentee.src.methodsTwo;
 
-import mentee.src.service.StringUtils;
+import java.mentee.src.service.StringUtils;
 
 /**
  * Created by Aliaksandr_Karnilovi on 11/26/2015.

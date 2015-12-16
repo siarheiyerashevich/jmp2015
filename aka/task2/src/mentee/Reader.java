@@ -1,10 +1,10 @@
-package mentee;
+package java.mentee;
 
 
-import mentee.observers.LongestWordKeeper;
-import mentee.observers.NumberCounter;
-import mentee.observers.ReversWord;
-import mentee.observers.WordCounter;
+import java.mentee.observers.LongestWordKeeper;
+import java.mentee.observers.NumberCounter;
+import java.mentee.observers.ReversWord;
+import java.mentee.observers.WordCounter;
 
 import java.io.File;
 import java.io.IOException;
