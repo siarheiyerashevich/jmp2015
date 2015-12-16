@@ -7,14 +7,14 @@
       xmlns:c="http://java.sun.com/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
    <f:view>
-      <h:outputLabel value="#{listBean.name}"/>
+      <h:outputLabel value="#{listBoxBean.name}"/>
    </f:view>
    <br/>
-   <h:selectOneListbox value="#{listBean.listData}">
-      <f:selectItems value="#{listBean.mapDataValue}" />
+   <h:selectOneListbox value="#{listBoxBean.listData}">
+      <f:selectItems value="#{listBoxBean.mapDataValue}" />
    </h:selectOneListbox>
    <br/>
-   <h:dataTable value="#{listBean.listDataValue}" var="value">
+   <h:dataTable value="#{dataTableBean.listDataValue}" var="value">
          <h:column>
             <f:facet name="header">Data</f:facet>
             #{value}

@@ -6,8 +6,13 @@
               version="2.0">
 
     <managed-bean>
-        <managed-bean-name>listBean</managed-bean-name>
-        <managed-bean-class>mentee.ListBean</managed-bean-class>
+        <managed-bean-name>listBoxBean</managed-bean-name>
+        <managed-bean-class>mentee.ListBoxBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>dataTableBean</managed-bean-name>
+        <managed-bean-class>mentee.DataTableBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
 </faces-config>
