@@ -1,6 +1,6 @@
-package mentee;
+package java.mentee;
 
-import mentee.observers.Observer;
+import java.mentee.observers.Observer;
 
 import java.util.ArrayList;
 import java.util.List;

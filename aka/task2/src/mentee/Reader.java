@@ -1,10 +1,10 @@
-package mentee;
+package java.mentee;
 
 
-import mentee.observers.LongestWordKeeper;
-import mentee.observers.NumberCounter;
-import mentee.observers.ReversWord;
-import mentee.observers.WordCounter;
+import java.mentee.observers.LongestWordKeeper;
+import java.mentee.observers.NumberCounter;
+import java.mentee.observers.ReversWord;
+import java.mentee.observers.WordCounter;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,14 +16,14 @@ class Reader {
     public static void main(String[] args) {
         Subject subject = new Subject();
 
-        new LongestWordKeeper(subject);
-        new NumberCounter(subject);
-        new ReversWord(subject);
-        new WordCounter(subject);
+        subject.attach(new LongestWordKeeper(subject));
+        subject.attach(new NumberCounter(subject));
+        subject.attach(new ReversWord(subject));
+        subject.attach(new WordCounter(subject));
 
         try {
             // change / for win to \
-            Path filePath = Paths.get("./src/resources", "text.txt");
+            Path filePath = Paths.get("./aka/task2/src/resources", "text.txt");
             String wordsFromFile = new String(Files.readAllBytes(filePath));
             String[] wordsArray = wordsFromFile.split(" ");
             for (int i = 0; i < wordsArray.length; i++) {

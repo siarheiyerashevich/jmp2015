@@ -1,6 +1,6 @@
-package mentee.observers;
+package java.mentee.observers;
 
-import mentee.Subject;
+import java.mentee.Subject;
 
 /**
  * Created by TheFallen on 08.12.15.
@@ -12,7 +12,6 @@ public class LongestWordKeeper extends Observer {
 
     public LongestWordKeeper(Subject subject){
         this.subject = subject;
-        this.subject.attach(this);
         this.longestWordLength=0;
     }
 
