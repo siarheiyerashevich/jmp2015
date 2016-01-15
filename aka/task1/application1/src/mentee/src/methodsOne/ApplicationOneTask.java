@@ -1,6 +1,6 @@
-package java.mentee.src.methodsOne;
+package task1.application1.src.mentee.src.methodsOne;
 
-import java.mentee.src.service.StringUtils;
+import task1.centralComponent.src.mentee.src.service.StringUtils;
 
 public class ApplicationOneTask {
 

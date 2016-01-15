@@ -1,6 +1,6 @@
-package java.mentee.observers;
+package task2.src.mentee.observers;
 
-import java.mentee.Subject;
+import task2.src.mentee.Subject;
 
 /**
  * Created by TheFallen on 08.12.15.

@@ -1,10 +1,9 @@
-package java.mentee;
+package task2.src.mentee;
 
-
-import java.mentee.observers.LongestWordKeeper;
-import java.mentee.observers.NumberCounter;
-import java.mentee.observers.ReversWord;
-import java.mentee.observers.WordCounter;
+import task2.src.mentee.observers.LongestWordKeeper;
+import task2.src.mentee.observers.NumberCounter;
+import task2.src.mentee.observers.ReversWord;
+import task2.src.mentee.observers.WordCounter;
 
 import java.io.File;
 import java.io.IOException;
