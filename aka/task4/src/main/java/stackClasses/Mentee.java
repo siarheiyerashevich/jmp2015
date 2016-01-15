@@ -13,11 +13,6 @@ public class Mentee {
         this.mentor = new Mentor("Thor");
     }
 
-    public Mentee() {
-        this.name = "name";
-        this.mentor = null;
-    }
-
     @Override
     public String toString() {
         return "stackClasses.Mentee{"+ name + "}";

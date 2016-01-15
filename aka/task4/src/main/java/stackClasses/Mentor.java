@@ -15,11 +15,6 @@ public class Mentor {
         this.mentee = new Mentee("Superman");
     }
 
-    public Mentor(String name, Mentee mentee) {
-        this.name = name;
-        this.mentee = mentee;
-    }
-
     @Override
     public String toString() {
         return "stackClasses.Mentor{"+ name + "}";
