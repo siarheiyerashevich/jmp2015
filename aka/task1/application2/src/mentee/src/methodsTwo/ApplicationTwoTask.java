@@ -1,6 +1,6 @@
-package java.mentee.src.methodsTwo;
+package task1.application2.src.mentee.src.methodsTwo;
 
-import java.mentee.src.service.StringUtils;
+import task1.centralComponent.src.mentee.src.service.StringUtils;
 
 /**
  * Created by Aliaksandr_Karnilovi on 11/26/2015.

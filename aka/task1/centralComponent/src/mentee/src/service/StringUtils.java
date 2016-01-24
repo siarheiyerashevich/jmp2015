@@ -1,4 +1,4 @@
-package java.mentee.src.service;
+package task1.centralComponent.src.mentee.src.service;
 
 public class StringUtils {
 

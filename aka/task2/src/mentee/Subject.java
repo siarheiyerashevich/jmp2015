@@ -1,6 +1,6 @@
-package java.mentee;
+package task2.src.mentee;
 
-import java.mentee.observers.Observer;
+import task2.src.mentee.observers.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
