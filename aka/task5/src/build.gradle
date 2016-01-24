@@ -1,5 +1,5 @@
 
-group 'Task4'
+group 'Task5'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
@@ -9,5 +9,5 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    compile 'org.javassist:javassist:3.15.0-GA'
+
 }
