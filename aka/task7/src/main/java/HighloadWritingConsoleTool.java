@@ -28,7 +28,6 @@ public class HighloadWritingConsoleTool extends Thread {
             e.printStackTrace();
         }
 
-
         for (int thr = 0; thr <= threadCount; thr++) {
             HighloadWritingConsoleTool thread = new HighloadWritingConsoleTool();
             tableCounter = thr*50;
