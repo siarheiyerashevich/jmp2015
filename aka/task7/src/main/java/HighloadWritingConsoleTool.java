@@ -68,8 +68,6 @@ public class HighloadWritingConsoleTool extends Thread {
 
                     for(int value = 0; value<=columnCount; value++) {
                         sbAddRows.append("'value'");
-//                        sbAddRows.append(value);
-//                        sbAddRows.append("'");
                        if (value < columnCount) {
                             sbAddRows.append(", ");
                         }
