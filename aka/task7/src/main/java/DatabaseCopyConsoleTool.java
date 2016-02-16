@@ -76,7 +76,9 @@ public class DatabaseCopyConsoleTool {
                     sbAddRows.append(" VALUES ( ");
                     for (int columnIndex = 0; columnIndex < columnList.size(); columnIndex++) {
                         final String value = rowsRs.getString(columnList.get(columnIndex));
+                        sbAddRows.append("'");
                         sbAddRows.append(value);
+                        sbAddRows.append("'");
                         if (columnIndex < columnList.size() - 1) {
                             sbAddRows.append(", ");
                         }
