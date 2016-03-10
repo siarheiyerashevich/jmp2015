@@ -10,8 +10,8 @@ repositories {
 }
 
 dependencies {
-    compile(project(':task8.service')) { transitive = false }
-    compile(project(':task8.impl')) { transitive = false }
+    compile(project(':task9.service')) { transitive = false }
+    compile(project(':task9.impl')) { transitive = false }
     compile 'com.sun.faces:jsf-api:2.2.9'
     compile 'com.sun.faces:jsf-impl:2.2.9'
     compile 'jstl:jstl:1.2'

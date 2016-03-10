@@ -11,6 +11,6 @@ repositories {
 }
 
 dependencies {
-    compile(project(':task8.web')) { transitive = false }
+    compile(project(':task9.web')) { transitive = false }
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
