@@ -9,5 +9,6 @@
         <h1>Gradle web app for Jenkins!</h1>
         <h2>Commit 1</h2>
         <h2>Commit 2</h2>
+        <h2>Commit 3</h2>
     </body>
 </html>
