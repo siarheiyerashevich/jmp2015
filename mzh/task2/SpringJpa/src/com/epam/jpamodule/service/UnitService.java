@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.epam.jpamodule.dao.UnitDAO;
 import com.epam.jpamodule.model.Unit;
 import com.epam.jpamodule.resource.AppConfig;
 
 @Service
+@Transactional
 public class UnitService {
 
 	@Autowired
@@ -20,6 +23,7 @@ public class UnitService {
 		unitDAO = new UnitDAO();
 	}
 
+	@Transactional
 	public void insertUnits() {
 		List<Unit> units = new ArrayList<>();
 		for (int i = 1; i <= appConfig.getCountUnits(); i++) {
@@ -29,6 +33,7 @@ public class UnitService {
 		unitDAO.insertUnits(units);
 	}
 
+	@Transactional
 	public int save(Unit unit) {
 		return unitDAO.save(unit);
 	}
@@ -37,6 +42,7 @@ public class UnitService {
 		return unitDAO.get(id);
 	}
 
+	@Transactional
 	public void remove(int id) throws Exception {
 		unitDAO.remove(id);
 	}

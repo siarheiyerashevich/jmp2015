@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.epam.jpamodule.dao.ProjectDAO;
 import com.epam.jpamodule.model.Project;
 import com.epam.jpamodule.resource.AppConfig;
 
 @Service
+@Transactional
 public class ProjectService {
 
 	@Autowired
@@ -20,7 +23,7 @@ public class ProjectService {
 		super();
 	}
 
-	//transaction
+	@Transactional
 	public void insertProjects() {
 		List<Project> projects = new ArrayList<>();
 		for (int i = 1; i <= appConfig.getCountProjects(); i++) {
@@ -30,6 +33,7 @@ public class ProjectService {
 		projectDAO.insertProjects(projects);
 	}
 
+	@Transactional
 	public int save(Project project) {
 		return projectDAO.save(project);
 	}
@@ -38,6 +42,7 @@ public class ProjectService {
 		return projectDAO.get(id);
 	}
 
+	@Transactional
 	public void remove(int id) throws Exception {
 		projectDAO.remove(id);
 	}

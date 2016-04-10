@@ -1,14 +1,14 @@
 package com.epam.jpamodule.service;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import com.epam.jpamodule.dao.EmployeeDAO;
 import com.epam.jpamodule.model.Address;
 import com.epam.jpamodule.model.Employee;
@@ -19,6 +19,7 @@ import com.epam.jpamodule.model.Unit;
 import com.epam.jpamodule.resource.AppConfig;
 
 @Service
+@Transactional
 public class EmployeeService {
 
 	@Autowired
@@ -34,6 +35,7 @@ public class EmployeeService {
 		super();
 	}
 
+	@Transactional
 	public void insertEmployees() {
 		List<Employee> employees = new ArrayList<>();
 		for (int i = 1; i <= appConfig.getCountEmployees(); i++) {
@@ -55,15 +57,23 @@ public class EmployeeService {
 		employeeDAO.insertEmployees(employees);
 	}
 
-	public void save() {
+	@Transactional(readOnly = true, propagation=Propagation.SUPPORTS)
+	public void testSave() {
+		Set<Project> projects = new HashSet<>();
+		int countProjects = new Random().nextInt(appConfig.getDefaultCountProjects());
+		for (int j = 0; j < countProjects; j++) {
+			int num = new Random().nextInt(appConfig.getCountProjects());
+			projects.add(projectService.get(num));
+		}
 		Employee employee1 = new Employee("New LastName", "New FirstName", EmployeeStatus.FULL_TIME_EMPLOYEE,
-				new Address("Country", "City"), null, new PersonalInfo("124", "234"), Collections.EMPTY_SET);
+				new Address("Country", "City"), null, new PersonalInfo("124", "234"), projects);
 		Employee employee2 = new Employee("New LastName", "New FirstName", EmployeeStatus.FULL_TIME_EMPLOYEE,
-				new Address("Country", "City"), null, new PersonalInfo("124", "234"), Collections.EMPTY_SET);
+				new Address("Country", "City"), null, new PersonalInfo("124", "234"), projects);
 		employeeDAO.save(employee1);
-		employeeDAO.save(employee2);
+		employeeDAO.save(employee2, true);
 	}
 
+	@Transactional
 	public int save(Employee employee) {
 		return employeeDAO.save(employee);
 	}
@@ -80,6 +90,7 @@ public class EmployeeService {
 		return employeeDAO.getByCountry(country);
 	}
 
+	@Transactional
 	public void remove(int id) throws Exception {
 		employeeDAO.remove(id);
 	}

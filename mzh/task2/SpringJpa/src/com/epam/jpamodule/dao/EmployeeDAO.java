@@ -1,25 +1,18 @@
 package com.epam.jpamodule.dao;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-
+import org.springframework.stereotype.Repository;
 import com.epam.jpamodule.model.Address;
 import com.epam.jpamodule.model.Employee;
-import com.epam.jpamodule.model.EmployeeStatus;
-import com.epam.jpamodule.model.PersonalInfo;
 
-@Component
+@Repository
 public class EmployeeDAO {
 
 	@Autowired
@@ -29,25 +22,18 @@ public class EmployeeDAO {
 		super();
 	}
 
-	@Transactional
 	public void insertEmployees(List<Employee> employees) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		EntityTransaction entityTransaction = entityManager.getTransaction();
 		try {
-			entityTransaction.begin();
 			for (Employee employee : employees) {
 				entityManager.persist(employee);
 			}
 			entityManager.flush();
-			entityTransaction.commit();
-		} catch (Exception exception) {
-			entityTransaction.rollback();
 		} finally {
 			entityManager.close();
 		}
 	}
 
-	@Transactional
 	public int save(Employee employee, final boolean isThrow) {
 		if (isThrow) {
 			throw new RuntimeException();
@@ -60,7 +46,6 @@ public class EmployeeDAO {
 			} else {
 				entityManager.merge(employee);
 			}
-
 			entityManager.flush();
 			id = employee.getId();
 		} finally {
@@ -69,7 +54,6 @@ public class EmployeeDAO {
 		return id;
 	}
 
-	@Transactional
 	public int save(Employee employee) {
 		return save(employee, false);
 	}
@@ -101,18 +85,11 @@ public class EmployeeDAO {
 		return entityManager.createQuery(criteriaQuery).getSingleResult();
 	}
 
-	@Transactional
 	public void remove(int id) throws Exception {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		EntityTransaction entityTransaction = entityManager.getTransaction();
 		try {
-			entityTransaction.begin();
 			Employee employee = entityManager.find(Employee.class, id);
 			entityManager.remove(employee);
-			entityTransaction.commit();
-		} catch (Exception exception) {
-			entityTransaction.rollback();
-			throw exception;
 		} finally {
 			entityManager.close();
 		}
