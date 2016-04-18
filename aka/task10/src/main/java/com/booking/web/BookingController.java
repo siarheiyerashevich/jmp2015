@@ -1,23 +1,21 @@
 package com.booking.web;
 
+import com.booking.bean.Ticket;
 import com.booking.service.BookingService;
 import com.booking.bean.User;
 import com.booking.service.MovieService;
-import com.booking.service.TicketService;
+import com.booking.service.UserService;
 import com.booking.utils.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -29,14 +27,17 @@ public class BookingController {
     private final Logger logger = LoggerFactory.getLogger(BookingController.class);
     private final BookingService bookingService;
     private final MovieService movieService;
-    private final TicketService ticketService;
+    private final UserService userService;
+
+    private Integer ticketNumber = 0;
+    private String selectedDate;
 
     @Autowired
     public BookingController(final BookingService bookingService, final MovieService movieService,
-                             final TicketService ticketService) {
+                             final UserService userService) {
         this.bookingService = bookingService;
         this.movieService = movieService;
-        this.ticketService = ticketService;
+        this.userService = userService;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -51,7 +52,7 @@ public class BookingController {
     public String findMovies(@PathVariable String selectedDate, Model model) {
 
         logger.info("selectedDate ", selectedDate);
-
+        this.selectedDate = selectedDate;
         model.addAttribute("movieList", movieService.getMovieList() );
         try {
             model.addAttribute("showParticularDay", true );
@@ -62,20 +63,35 @@ public class BookingController {
         return "index";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginPage(Locale locale, Model model) {
-        return "login";
-    }
-
-    @RequestMapping(value = "/index", method = RequestMethod.POST)
-    public String login(@Validated User user, Model model) {
-        model.addAttribute("userName", user.getFirstName());
-        return "user";
-    }
-
     @RequestMapping(value = "/tickets", method = RequestMethod.GET)
     public String ticketsPage( Model model) {
-        ticketService.getTicketsList();
+        logger.info("tickets");
+        final List<Ticket> ticketList = bookingService.getTicketsList();
+        model.addAttribute("ticketList", ticketList );
         return "tickets";
+    }
+
+    @RequestMapping(value = "/tickets/{ticketNumber}", method = RequestMethod.GET)
+    public String deleteTicket(@PathVariable String ticketNumber) {
+        logger.info("deleteTicket", ticketNumber);
+        bookingService.deleteTicket(ticketNumber);
+//        final List<Ticket> ticketList = bookingService.getTicketsList();
+//        model.addAttribute("ticketList", ticketList );
+        return "redirect:/tickets";
+    }
+
+    @RequestMapping(value = "/buyTicket", method = RequestMethod.POST)
+    public @ResponseBody
+    String buyTicket(@RequestParam String ticketInfo, @RequestParam String firstName,
+                     @RequestParam String lastName, @RequestParam String place) {
+        logger.info("buyTicket", ticketInfo, firstName, lastName, place);
+        this.ticketNumber++;
+        final User user = userService.createUser(firstName, lastName);
+        final String[] movieNameAndTime = ticketInfo.split(";");
+        final String movieName = movieNameAndTime[0];
+        final String movieDateTime = selectedDate+" "+movieNameAndTime[1];
+        bookingService.addTicket(this.ticketNumber.toString(), movieName, movieDateTime, place,user);
+
+        return "ticket with number " + ticketNumber + " was bought";
     }
 }

@@ -13,15 +13,19 @@
 //    });
 //});
 //
-//function sendInfo(selectedDate)
-//{
-//    $.ajax({
-//        url : 'GetMovie',
-//        data : {
-//            selectedDate : selectedDate
-//        },
-//        success : function(responseText) {
-//            movieResponse = responseText;
-//        }
-//    });
-//}
+function buyTicket(ticketInfo)
+{
+    $.ajax({
+        type: "POST",
+        url : 'buyTicket',
+        data : {
+            ticketInfo : ticketInfo,
+            firstName: $('#firstName').val(),
+            lastName: $('#lastName').val(),
+            place: $('#place').val()
+        },
+        success : function(responseText) {
+            $('#buyTicketResponse').html(responseText);;
+        }
+    });
+}

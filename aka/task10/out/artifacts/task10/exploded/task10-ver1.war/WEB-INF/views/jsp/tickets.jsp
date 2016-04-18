@@ -19,13 +19,13 @@
     </div>
   </div>
 </nav>
-
-<div class="container">
-  <h1>Tickets list: </h1>
-  <c:forEach items="${ticketsList}" var="ticket">
-    ${ticket.user.firstName}  ${ticket.user.lastName}  ${ticket.movieName}<br>
-  </c:forEach>
-
+<div class="jumbotron">
+  <div class="container">
+    <h1>Tickets list: </h1>
+    <c:forEach items="${ticketList}" var="ticket">
+      <a class="btn btn-default" href="tickets/${ticket.number}" role="button">Delete</a> ${ticket.user.firstName}  ${ticket.user.lastName}  ${ticket.movieName} ${ticket.movieTime}<br>
+    </c:forEach>
+  </div>
 </div>
 
 <%--<spring:url value="/resources/core/js/bookingAjax.js" var="bookingAjax" />--%>

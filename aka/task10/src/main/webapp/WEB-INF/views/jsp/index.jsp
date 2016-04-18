@@ -69,9 +69,9 @@
     <div class="row">
         <c:if test="${showParticularDay}">
             <div class="col-md-4">
-                First Name:   <input type="text" name="firstName"> <br>
-                Last Name:    <input type="text" name="lastName"> <br>
-                Place Number: <input type="text" name="place"> <br>
+                First Name:   <input type="text" id="firstName" name="firstName"> <br>
+                Last Name:    <input type="text" id="lastName" name="lastName"> <br>
+                Place Number: <input type="number" id="place" name="place"> <br>
             </div>
 
             <div class="col-md-8">
@@ -81,20 +81,25 @@
                             ${movie.movieName}
                     </div>
                     <div class="col-md-6">
-                        <a class="btn btn-default" href="#" role="button">17:00-cost:15$</a>
-                        <a class="btn btn-default" href="#" role="button">19:00-cost:15$</a> <br>
+                        <a class="btn btn-default" href="#" onclick="buyTicket('${movie.movieName};17:00')" role="button">17:00-cost:15$</a>
+                        <a class="btn btn-default" href="#" onclick="buyTicket('${movie.movieName};19:00')" role="button">19:00-cost:15$</a> <br>
                     </div>
                 </c:forEach>
             </div>
 
         </c:if>
     </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div id="buyTicketResponse"></div>
+        </div>
+    </div>
 </div>
 
-<%--<spring:url value="/resources/core/js/bookingAjax.js" var="bookingAjax" />--%>
+<spring:url value="/resources/core/js/bookingAjax.js" var="bookingAjax" />
 <spring:url value="/resources/core/js/bootstrap.min.js" var="bootstrapJs" />
 
-<%--<script src="${bookingAjax}"></script>--%>
+<script src="${bookingAjax}"></script>
 <script src="${bootstrapJs}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 

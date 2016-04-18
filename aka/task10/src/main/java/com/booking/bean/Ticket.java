@@ -9,10 +9,19 @@ public class Ticket {
 
     private String number;
     private String movieName;
-    private Date movieTime;
+    private String movieTime;
     private Integer place;
-    private Double cost;
+    private Integer cost;
     private User user;
+
+    public Ticket(String number, String movieName, String movieTime, Integer place, Integer cost, User user) {
+        this.number = number;
+        this.movieName = movieName;
+        this.movieTime = movieTime;
+        this.place = place;
+        this.cost = cost;
+        this.user = user;
+    }
 
     public String getNumber() {
         return number;
@@ -30,11 +39,11 @@ public class Ticket {
         this.movieName = movieName;
     }
 
-    public Date getMovieTime() {
+    public String getMovieTime() {
         return movieTime;
     }
 
-    public void setMovieTime(Date movieStartTime) {
+    public void setMovieTime(String movieStartTime) {
         this.movieTime = movieStartTime;
     }
 
@@ -46,11 +55,11 @@ public class Ticket {
         this.place = place;
     }
 
-    public Double getCost() {
+    public Integer getCost() {
         return cost;
     }
 
-    public void setCost(Double cost) {
+    public void setCost(Integer cost) {
         this.cost = cost;
     }
 

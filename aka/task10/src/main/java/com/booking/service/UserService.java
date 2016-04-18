@@ -1,5 +1,6 @@
 package com.booking.service;
 
+import com.booking.bean.User;
 import org.springframework.stereotype.Service;
 
 /**
@@ -7,4 +8,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserService {
+
+    public User createUser(final String firstName, final String lastName) {
+        return new User(firstName, lastName);
+    }
 }
